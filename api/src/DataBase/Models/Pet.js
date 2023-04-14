@@ -18,12 +18,16 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      category: {
-        type: DataTypes.STRING,
+      specie: {
+        type: DataTypes.ENUM("Cat", "Dog", "Rabbit", "Guinea Pig", "Parrot"),
+        allowNull: false,
+      },
+      gender: {
+        type: DataTypes.ENUM("Male", "Female"),
         allowNull: false,
       },
       size: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM("Small", "Medium", "Large"),
         allowNull: false,
       },
       weight: {
@@ -34,16 +38,21 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      gender: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       adopted: {
         type: BOOLEAN,
         defaultValue: false,
+      },
+
+      godfather: {
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true,
+      },
+
+      godparentDonations: {
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        allowNull: true,
       },
     },
     { timestamps: false }
   );
 };
-
