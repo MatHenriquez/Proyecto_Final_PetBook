@@ -1,0 +1,20 @@
+{
+    "id": 1355453924,
+    "nickname": "TEST_USER_835713232",
+    "password": "cRaMyfhc2g",
+    "site_status": "active",
+    "site_id": "MLA",
+    "description": "User for my PetBook Academichal App",
+    "date_created": "2023-04-18T11:04:30-04:00",
+    "date_last_updated": "2023-04-18T11:04:30-04:00",
+    "credentials":{
+        "test":{
+            "access_token": "TEST-712263956584107-041811-5abbeb3e88b18ef5eefb3b4f0f5f00a6-1355453924",
+            "publick_key": "TEST-77bdf9cf-b200-4022-8a0c-96a726982734"
+        }, "production": {
+            "access_token": "APP_USR-712263956584107-041811-bc984672613102a3498388a7cab2abed-1355453924",
+            "publick_key": "APP_USR-5fd8e808-f84d-4f60-ae04-ef58e1653d4c"
+
+        }
+    }
+}
