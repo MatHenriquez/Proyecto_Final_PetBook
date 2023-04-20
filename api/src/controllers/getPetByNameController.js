@@ -1,4 +1,4 @@
-const { Pet } = require("../DataBase/db.js");
+const { Pet } = require("../db.js");
 const { Op } = require("sequelize");
 
 const getPetByNameController = async (name) => {

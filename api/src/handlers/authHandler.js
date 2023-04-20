@@ -1,4 +1,4 @@
-const { User } = require('../DataBase/db');
+const { User } = require('../db');
 const bcryptjs = require('bcryptjs');
 const { generateJWT } = require('../helpers/generateJWT');
 const { googleVerify } = require('../helpers/googleVerify');

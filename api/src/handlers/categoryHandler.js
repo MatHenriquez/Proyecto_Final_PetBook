@@ -1,4 +1,4 @@
-const { Category, User } = require('../DataBase/db');
+const { Category, User } = require('../db');
 const { Op } = require('sequelize');
 
 const categoryHandlerGet = async (req, res) => {

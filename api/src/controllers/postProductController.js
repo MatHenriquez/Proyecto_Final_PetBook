@@ -1,4 +1,4 @@
-const { Product, Pet } = require('../DataBase/db');
+const { Product, Pet } = require('../db');
 
 const postProductController = async (ProductData) => {
     try {

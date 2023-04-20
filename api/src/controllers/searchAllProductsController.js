@@ -1,4 +1,4 @@
-const { Product } = require('../DataBase/db');
+const { Product } = require('../db');
 
 const searchAllProductsController = async  () => {
     try {

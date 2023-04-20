@@ -1,4 +1,4 @@
-const { Pet, User } = require("../DataBase/db.js");
+const { Pet, User } = require("../db.js");
 
 const adoptionFormController = async (request) =>{
     const userId = request.userId;

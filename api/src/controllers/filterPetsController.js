@@ -1,4 +1,4 @@
-const { Pet } = require("../DataBase/db.js");
+const { Pet } = require("../db.js");
 
 const filterPetsController = async ({sorts, ...resto}) => {
 
