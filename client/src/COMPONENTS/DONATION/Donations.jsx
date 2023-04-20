@@ -19,7 +19,8 @@ export default function Donations(){
 
     return (
         <div className={Styles.container}>
-            <h2>Puppy Size Donation</h2>
+            <h1 className="subtitle text textColorPink">HELP A PET!</h1>
+            <h2 className="text">Puppy Size Donation</h2>
             <h5>Value: AR$ 1.000</h5>
             <form action="http://localhost:3001/checkout" method="GET">
                 <input type="hidden" name="title" value="Puppy Size Donation"/>
@@ -31,7 +32,7 @@ export default function Donations(){
             <hr />
             <br />
 
-            <h2>Adventurous Hearts Donation</h2>
+            <h2 className="text">Adventurous Hearts Donation</h2>
             <h5>Valor de AR$ 2.500</h5>
             <form action="http://localhost:3001/checkout" method="GET">
                 <input type="hidden" name="title" value="Adventurous Hearts Donation"/>
@@ -43,7 +44,7 @@ export default function Donations(){
             <hr />
             <br />
 
-            <h2>Large Love Donation</h2>
+            <h2 className="text">Large Love Donation</h2>
             <h5>Valor de AR$ 5.000</h5>
             <form action="http://localhost:3001/checkout" method="GET">
                 <input type="hidden" name="title" value="Large Love Donation"/>
@@ -55,7 +56,7 @@ export default function Donations(){
             <hr />
             <br />
 
-            <h2>Personalized Donation</h2>
+            <h2 className="text">Personalized Donation</h2>
             <form action="http://localhost:3001/checkout" method="GET" className={Styles.container}>
                 <input type="hidden" name="title" value="Donación pequeño corazón."/>
                 <label>Enter the amount to donate</label>
