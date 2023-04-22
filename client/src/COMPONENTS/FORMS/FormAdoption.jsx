@@ -21,26 +21,18 @@ const FormAdoption = () => {
         </div>
         <Formik
         initialValues={{
-            telephone: '',
-            petname: '',
-            availability: '',
-            message:''
+            user: '',
+            pet: '',
+            message:'',
+            date: '',
         }}
         validate={(valores) => {
             let errores ={}
-            //validacion para el telefono
-            if (!valores.telephone) {
-                errores.telephone = 'Please, enter your telephone number!'
-              } else if (!/^[0-9\s\(\)\-]{1,20}$/.test(valores.telephone)) { // solo números, paréntesis y guiones medios
-                errores.telephone = 'Telephone can only contain numbers, parentheses and hyphens.'
-              } else if (valores.telephone.replace(/[^0-9]/g, '').length > 15) { // solo hasta 15 números
-                errores.telephone = 'Telephone number must not exceed 15 digits.'
-              }
               //validacion para el petname
               if (!valores.petname) {
-                errores.petname = 'Please enter the name of the pet you would like to adopt!';
-              } else if (!/^[a-zA-Z\s]{1,15}$/.test(valores.petname)) { // solo letras y espacios, hasta 15 caracteres
-                errores.petname = 'Pet name can only contain letters and must not exceed 15 characters.';
+                errores.pet = 'Please enter the name of the pet you would like to adopt!';
+              } else if (!/^[a-zA-Z\s]{1,15}$/.test(valores.pet)) { // solo letras y espacios, hasta 15 caracteres
+                errores.pet = 'Pet name can only contain letters and must not exceed 15 characters.';
               }
                 //validacion mensaje
             if(!valores.message){
@@ -67,51 +59,38 @@ const FormAdoption = () => {
          <Form className="textColorGreen textItalic text-center">
             {console.log(errors)}
          <div>
-             <label htmlFor="telephone">Telephone:</label>
-             <Field
-             type ="number" 
-             id="telephone" 
-             name="telephone" 
-             placeholder = "(212) 555-1234" 
-     
-             />
-            <ErrorMessage name="telephone" component={()=> (
-                <div className="text-error">{errors.telephone}</div>
-            )}/>
-         </div>
-         <div>
              <label htmlFor="petname">Pet Name:</label>
              <Field
              type ="text" 
-             id="petname" 
-             name="petname" 
+             id="pet" 
+             name="pet" 
              placeholder = "" 
              /> 
-             <ErrorMessage name="petname" component={()=> (
-                <div className="text-error">{errors.petname}</div>
+             <ErrorMessage name="pet" component={()=> (
+                <div className="text-error">{errors.pet}</div>
               )}/>
          </div>
          <div>
              <Agenda>
-             <label htmlFor="availability"></label>
+             <label htmlFor="date"></label>
              <Field
              type ="text" 
-             id="availability" 
-             name="availability"
+             id="date" 
+             name="date"
              placeholder = "" 
              />
-             <ErrorMessage name="availability" component={()=> (
-                <div className="text-error">{errors.availability}</div>
+             <ErrorMessage name="date" component={()=> (
+                <div className="text-error">{errors.date}</div>
               )}/>
             
              <Field
              type ="text" 
-             id="availability" 
-             name="availability"
+             id="date" 
+             name="date"
              placeholder = "" 
              />
-             <ErrorMessage name="availability" component={()=> (
-                <div className="error">{errors.availability}</div>
+             <ErrorMessage name="date" component={()=> (
+                <div className="error">{errors.date}</div>
               )}/>
           </Agenda>     
          </div> 
