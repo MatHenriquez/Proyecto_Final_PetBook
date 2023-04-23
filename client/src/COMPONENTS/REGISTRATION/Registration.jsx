@@ -52,6 +52,7 @@ const Registration = () => {
 
 
     const response= dispatch(registerUser(formState))
+    console.log(response);
     navigate('/home')
   }
 

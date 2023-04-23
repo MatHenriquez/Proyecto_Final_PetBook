@@ -3,7 +3,7 @@ const uploadImage = require("../utils/cloudinary");
 
 const postUserPetsController = async (idUser, idPet, history, image) => {
     try {
-        if(!idUser || !idPet || !history || !image) throw new Error("information is missing");
+        if (!idUser || !idPet || !history || !image) throw new Error("information is missing");
 
         const userPet = await User_pet.findOne({
             where: {
@@ -31,11 +31,13 @@ const postUserPetsController = async (idUser, idPet, history, image) => {
 
 const postAdoptUserPetsController = async (idUser, idPet) => {
     try {
-        
+
         const user = await User.findByPk(idUser);
         const pet = await Pet.findByPk(idPet);
-        
-        if(!user || !pet) throw new Error("There is no user or pet");
+        const findPet = await User_pet.findOne({ where: { petId: idPet } });
+
+        if (!user || !pet) throw new Error("There is no user or pet");
+        if (findPet) throw new Error("You can't adopt this pet");
 
         await user.addPet(pet);
 
