@@ -87,6 +87,7 @@ export const registerUser = (userData) => async (dispatch) => {
   console.log(userData);
   try {
     const res = await axios.post(`http://localhost:3001/users`, userData);
+    // localStorage.setItem('token', res.data.token);
 
     console.log(res.data);
   } catch (err) {
