@@ -68,10 +68,10 @@ function About() {
 
 
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 ">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 ">
 
        {/* SOFI */}
-      <div class="p-4">
+      <div className="p-4">
         <a className="group relative bg-black h-5/6 lg:h-full flex justify-center items-center">
                     <img alt="Developer" src="/sofimorita.jpg" className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
 
@@ -101,21 +101,21 @@ function About() {
         {/* MATI */}
         <div class="p-4">
         <a className="group relative bg-black h-5/6 lg:h-full flex justify-center items-center">
-            <img alt="FOTO MATI" src="" className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
+            <img alt="FOTO MATI" src="/matifreyjamei.jpg" className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
 
             <div className="relative p-2 sm:p-6 lg:p-6">  
               <div className="mt-20 sm:mt-20 lg:mt-20">
                 <div className="transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100 translate-y-96">
-                <p className="text-xl font-bold text-white sm:text-2xl">MATI & DOG</p>
+                <p className="text-xl font-bold text-white sm:text-2xl">Mati, Freyja & Mei </p>
                 <br />
                 <p className="text-sm font-medium uppercase tracking-widest  text-pink-500"> Front-End team</p>
                 
                   <p className="text-sm text-white">
-                    Mati es a FullStack developer. He is a highly analytical thinker who approaches every problem with a methodical and detail-oriented mindset. 
+                    Mati is a FullStack developer. He is a highly analytical thinker who approaches every problem with a methodical and detail-oriented mindset. 
                   </p>
                   <br />
                   <p className="text-sm text-white">
-                    El dog es--.   
+                    Freyja and Mei were adopted together and have been inseparable ever since. They are both lovable and playful sisters who bring joy to everyone around them.  
                   </p>
                   <Link><button><img src="/git.png" alt="" className='w-8 h-8'/></button></Link>
                   <Link><button><img src="/linkedin.png" alt="" className='w-8 h-8'/></button></Link>
@@ -172,7 +172,7 @@ function About() {
                   </p>
                   <br />
                   <p className="text-sm text-white">
-                    Milo is the most curious and loving cat, who always sleeps on top of Nikki’s  keyboard.  
+                  Milo is the most curious and loving cat. He is the greatest companion and can often be found snuggled up next to Nikki's keyboard as she works on her latest project.
                   </p>
                   <Link><button><img src="/git.png" alt="" className='w-8 h-8'/></button></Link>
                   <Link><button><img src="/linkedin.png" alt="" className='w-8 h-8'/></button></Link>
@@ -215,12 +215,12 @@ function About() {
         {/* RAUL */}
         <div class="p-4">
         <a className="group relative bg-black h-5/6 lg:h-full flex justify-center items-center">
-                    <img alt="Raul Foto" src="/.jpg" className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
+                    <img alt="Raul Foto" src="/raul.png" className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
 
                     <div className="relative p-2 sm:p-6 lg:p-6">  
                       <div className="mt-20 sm:mt-20 lg:mt-20">
                         <div className="transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100 translate-y-96">
-                        <p className="text-xl font-bold text-white sm:text-2xl">Raúl & perro</p>
+                        <p className="text-xl font-bold text-white sm:text-2xl">Raúl </p>
                         <br />
                         <p className="text-sm font-medium uppercase tracking-widest  text-pink-500"> Back-End team</p>
                         
@@ -229,7 +229,7 @@ function About() {
                           </p>
                           <br />
                           <p className="text-sm text-white">
-                         lalalallalaa
+                         {/* resumen de la mascota */}
                           </p>
                           <Link><button><img src="/git.png" alt="" className='w-8 h-8'/></button></Link>
                           <Link><button><img src="/linkedin.png" alt="" className='w-8 h-8'/></button></Link>
@@ -250,16 +250,16 @@ function About() {
                     <div className="relative p-2 sm:p-6 lg:p-6">  
                       <div className="mt-20 sm:mt-20 lg:mt-20">
                         <div className="transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100 translate-y-96">
-                        <p className="text-xl font-bold text-white sm:text-2xl">Camilo & pet</p>
+                        <p className="text-xl font-bold text-white sm:text-2xl">Camilo</p>
                         <br />
                         <p className="text-sm font-medium uppercase tracking-widest  text-pink-500"> Back-End team</p>
                         
                           <p className="text-sm text-white">
-                            Lucas is a full stack developer, he is a hard-working back-end developer who is always striving to improve his skills and deliver high-quality work.
+                            Camilo is a full stack developer, he is a hard-working back-end developer who is always striving to improve his skills and deliver high-quality work.
                           </p>
                           <br />
                           <p className="text-sm text-white">
-                          lalalalalalalala.
+                          {/* resumen de la mascota */}
                           </p>
                           <Link><button><img src="/git.png" alt="" className='w-8 h-8'/></button></Link>
                           <Link><button><img src="/linkedin.png" alt="" className='w-8 h-8'/></button></Link>

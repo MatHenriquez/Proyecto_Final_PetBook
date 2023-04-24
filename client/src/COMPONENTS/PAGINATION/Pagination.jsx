@@ -43,34 +43,35 @@ const Pagination = () => {
   return (
     <div>
      
-      <div class="flex items-center justify-center ">
-        <div class="flex justify-center items-center space-x-4">
-        <div
-            onClick={handlerStart}
-            class="border rounded-md bg-gray-100 px-2 py-1 text-3xl leading-6 text-slate-400 transition hover:bg-gray-200 hover:text-slate-500 cursor-pointer shadow-sm"
-          >
-            inicio
+      <div className="flex items-center justify-center">
+        <div className="btn-group">
+          <div
+              onClick={handlerStart}
+              className="btn btn-ghost text-neutral text-2xl"
+            >
+              «
           </div>
           <div
             onClick={handlerPrev}
-            class="border rounded-md bg-gray-100 px-2 py-1 text-3xl leading-6 text-slate-400 transition hover:bg-gray-200 hover:text-slate-500 cursor-pointer shadow-sm"
+            className="btn btn-ghost text-neutral text-2xl"
           >
-            Prev
+            ‹
           </div>
-          <div class="text-slate-500">
+          <div className="btn btn-ghost text-neutral text-l mt-[0.18rem]">
             {state?.pets?.currentPage} / {state.pets.totalPage}
           </div>
           <div
             onClick={() => handlerNext()}
-            class="border rounded-md bg-gray-100 px-2 py-1 text-3xl leading-6 text-slate-400 transition hover:bg-gray-200 hover:text-slate-500 cursor-pointer shadow-sm"
+            className="btn btn-ghost text-neutral text-2xl"
           >
-            Next
+            ›
           </div>
           <div
             onClick={handlerEnd}
-            class="border rounded-md bg-gray-100 px-2 py-1 text-3xl leading-6 text-slate-400 transition hover:bg-gray-200 hover:text-slate-500 cursor-pointer shadow-sm"
+            className="btn btn-ghost text-neutral text-2xl"
+         
           >
-            fin
+            »
           </div>
         </div>
       </div>

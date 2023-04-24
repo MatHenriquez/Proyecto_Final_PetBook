@@ -29,6 +29,13 @@ export default function SearchBar() {
     searchNamesResults(e.target.value);
    }
    
+   function handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSubmit();
+    }
+  }
+
    useEffect(()=>{
     if(!name){
       dispatch(setNamePets())
@@ -50,17 +57,23 @@ export default function SearchBar() {
   }
 
   return (
-    <nav>
-      <input
+    <nav >
+      <div className="rounded-full">
+      <input      
         id="search"
         type="text"
         name="name"
         value={name}
         autocomplete="off"
         placeholder="  Type here..."
-        onChange={(e) => handleInputChange(e)}
+        onChange={(e) => handleInputChange(e)} onKeyDown={(e) => handleKeyDown(e)}
+        className=" rounded-full"
+        
       />
-      <button onClick={(e) => handleSubmit(e)}>SEARCH🔎</button>
+      <button className="btn btn-secondary btn-circle btn-xs" onClick={(e) => handleSubmit(e)}>🔎</button>
+
+      </div>
+
     </nav>
   );
 }

@@ -1,4 +1,4 @@
-const { Pet } = require("../DataBase/db.js");
+const { Pet } = require("../database/db.js");
 const { Op } = require("sequelize");
 
 const allLogicPetsController = async ({ name, specie, gender, size, weight, age, godFather, sort, typeOrder}, page, pageSize,

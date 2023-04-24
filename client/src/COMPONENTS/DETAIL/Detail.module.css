@@ -18,7 +18,7 @@
   font-size: 60px;
   line-height: 100px;
   letter-spacing: 0.2em;
-  color: #F08484;
+  color:#1B2021;
 }
 
 .list {
@@ -50,6 +50,7 @@ list-style-type: circle;
   border-radius: 50%; /* valor del 50% de las dimensiones de la imagen */
   background: transparent;
   object-fit: cover; /* para que la imagen cubra completamente el círculo */
+
 }
 
  
@@ -91,7 +92,7 @@ left: 154px;
 top: 614px;
 
 font-family: 'Inter';
-color: #F08484;
+color:#1B2021;
 line-height: 24px;
 background: #C0F8D1;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -104,7 +105,7 @@ border-radius: 10px;
     height: 24px;
     left: 482px;
     top: 614px;
-    color: #F08484;
+    color:#1B2021;
 font-family: 'Inter';
 line-height: 24px;
 background: #C0F8D1;

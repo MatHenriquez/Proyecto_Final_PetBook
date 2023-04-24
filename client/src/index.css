@@ -39,7 +39,7 @@
   /* SUBTITULOS */
 
 .subtitle{
- @apply font-bold text-neutral text-5xl uppercase tracking-widest leading-loose text-center font-['candara']
+ @apply font-bold text-neutral text-2xl uppercase tracking-widest leading-loose text-center font-['candara']
 }
 
   /* PÁRRAFOS */

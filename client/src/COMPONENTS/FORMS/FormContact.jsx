@@ -93,15 +93,20 @@ const FormContact = () => {
             onSubmit={(values, {resetForm}) => {
               Swal.fire({
                 title: 'HELP A PET!',
-                text: 'Donate \u2764',
-                imageUrl:'https://dam.ngenespanol.com/wp-content/uploads/2019/10/perros-personalidad-2-770x395.jpg',
-                imageWidth: 400,
-                imageHeight: 200,
+                text: 'Donate \u2764 ',
+                imageUrl:'https://media.tenor.com/O7tk8A-EoIgAAAAj/puppy.gif',
+                imageWidth: 300,
+                imageHeight: 300,
                 imageAlt: 'Custom image',
                 showCancelButton: true,
                 confirmButtonText: 'Yes!',
                 cancelButtonText: 'Not Now!',
-                background: '#9ddcab',
+                confirmButtonColor: '#1B2021',
+                ccancelButtonColor: 'transparent',
+                cancelButtonBorder: 'none',
+                cancelButtonColor:'#C0F8D1',
+                background: '#C0F8D1',
+                color: '#1B2021',
                
               }).then((result) => {
                 if (result.isConfirmed) {

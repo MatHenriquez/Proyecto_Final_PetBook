@@ -24,10 +24,10 @@ const handlerFilter = ()=>{
 }
 
   return (
-    <div>
-      <label htmlFor="name">filtrar por ESPECIE</label>
-      <select name="specie" onChange={(e) => handleClick(e)}>
-      <option value="Default">Select a specie</option>
+    <div className="m-2">
+
+      <select className="m-2" name="specie" onChange={(e) => handleClick(e)}>
+      <option value="Default">specie</option>
      <option value="Cat">Cat</option>
         <option value="Dog">Dog</option>
         <option value="Rabbit">Rabbit</option>
@@ -35,36 +35,35 @@ const handlerFilter = ()=>{
         <option value="Parrot">Parrot</option>
       </select>
 
-      <label htmlFor="name">filtrar por GENERO</label>
-      <select onChange={(e) => handleClick(e)} name="gender">
-      <option value="Default">Select a gender</option>
+
+      <select className="m-2" onChange={(e) => handleClick(e)} name="gender">
+      <option className="text" value="Default">gender</option>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
       </select>
 
-      <label htmlFor="name">filtrar por TAMAÑO</label>
-      <select onChange={(e) => handleClick(e)} name="size">
-      <option value="Default">Select a size</option>
+      <select className="m-2" onChange={(e) => handleClick(e)} name="size">
+      <option value="Default">size</option>
         <option value="Small">Small</option>
         <option value="Medium">Medium</option>
         <option value="Large">Large</option>
       </select>
 
-      <label htmlFor="name">ordenar POR</label>
-      <select onChange={(e) => handleClick(e)} name="typeOrder">
+  
+      <select className="m-2" onChange={(e) => handleClick(e)} name="typeOrder">
       <option value="Default">sort by</option>
         <option value="name">name</option>
         <option value="age">age</option>
         <option value="weight">weight</option>
       </select>
-      <label htmlFor="name">ordenar de MANERA</label>
-      <select onChange={(e) => handleClick(e)} name="sort">
-      <option value="Default">order in a way</option>
+  
+      <select className="m-2" onChange={(e) => handleClick(e)} name="sort">
+      <option value="Default">asc -desc</option>
         <option value="ASC">ASC</option>
         <option value="DESC">DESC</option>
       </select>
       
-      <button onClick={handlerFilter}>Filter & Order</button>
+      <button className="btn btn-primary btn-xs h-max-1 h-min-1" onClick={handlerFilter}>Filter & Order</button>
     </div>
   );
 };

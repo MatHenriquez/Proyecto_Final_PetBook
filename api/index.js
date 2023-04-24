@@ -3,10 +3,10 @@ const { sequelize } = require("./src/database/db.js");
 const { Role } = require('./src/database/db.js');
 require("dotenv").config();
 const { PORT } = process.env;
-const loadPets = require('./src/DataBase/scriptPets.js')
+const loadPets = require('./src/dataBase/scriptPets.js')
 
 
-sequelize.sync({alter:true }).then( async () => {
+sequelize.sync({force:true }).then( async () => {
 
   await loadPets();
   console.log("estoy conectado a", sequelize.getDatabaseName());

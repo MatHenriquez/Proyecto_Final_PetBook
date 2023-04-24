@@ -27,7 +27,7 @@ export default function Landing() {
             <h1 className="mb-5 text-5xl font-semibold">Welcome to</h1>
             <p className="mb-5 italic"> <img src="/logo.png" alt="" /> Log in to take home your new family member. </p>
          
-            <button className="btn btn-primary" onClick={handleLoginClick}>LOG  IN</button>
+            <button onClick={handleLoginClick}><label htmlFor="my-modal-3" className="btn btn-primary">LOG IN</label></button>
 
             <div className="mt-4">
               <Link to="/home">
@@ -39,16 +39,23 @@ export default function Landing() {
       </div>
 
       {showLogin && (
-        <div className="opacity-[99%] flex justify-center items-center h-screen ">
-          <div className="mt-[-75rem]">
-          <button className="btn btn-square bg-white" onClick={handleCloseClick}>
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-          </button>
-          {/* <button className="" onClick={handleCloseClick}>X</button> */}
-            <Login />
-          </div>
-        </div>
+        <div>
+            <label htmlFor="my-modal-3" className="btn">open modal</label>
+
+            <input type="checkbox" id="my-modal-3" className="modal-toggle" />
+            <div className="modal">
+              <div className="modal-box relative">
+                <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                <Login />
+              </div>
+         </div>
+
+</div>
       )}
+
+
+
+
 
     </div>
   );

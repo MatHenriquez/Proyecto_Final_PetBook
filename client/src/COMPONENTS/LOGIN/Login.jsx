@@ -121,10 +121,9 @@ function handleCredentialResponse(response){
     <form onSubmit={handleSubmit} 
     className='max-w-[30rem] w-full mx-auto rounded-lg bg-white  p-4'> 
 
-        <h2 
-        className='subtitle'>LOGIN.</h2>
+
        
-       <div className='flex flex-col py-2'>
+       <div className='flex flex-col'>
  
         <input
           type="email"

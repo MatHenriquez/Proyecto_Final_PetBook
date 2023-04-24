@@ -18,6 +18,7 @@ const Loginpage = () => {
     <div 
     className='bg-white
      flex flex-col justify-center'>
+ <h2 className='subtitle'>LOGIN.</h2> 
       <Login />
     
     </div>

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getPets } from "../../Redux/actions";
 import Cards from "../CARDS/Cards";
 import Header from "../HEADER/Header";
+import HeaderLogin from "../HEADER/HeaderLogin";
 import Footer from "../FOOTER/Footer";
 import styles from "../CARD/Card.module.css";
 import SearchBar from "../SEARCH/SearchBar";
@@ -47,52 +48,71 @@ const AvaliblePetsAdoption = () => {
   };
 
   return (
-    <div>
-      <Header></Header>
+    <div className="bg-[url('/backadopt.png')] bg-no-repeat w-full">
+      
+{/* HEADER */}
+  <div>
+      {localStorage.getItem('token') ? <HeaderLogin className='mb-4' /> : <Header className="mb-4" /> }    
+  </div>
 
-      <FilterAndOrder />
-      {/* esto es de la search */}
-      <SearchBar />
-      {state?.namePets?.length > 0 && <SearchResultsList />}
-      {/* si se mueve esto a otro componente importar searchBar y searchResultList y ponerlo en este orden*/}
+{/* FILTRADO Y SEARCH  */}
 
-      <button onClick={onclickRefresh}>Refresh</button>
-      <div className={styles.divPagination}>
+<div className="navbar border-black">
+  <div className="">
+    <FilterAndOrder />
+    <button className="btn btn-xs mt-1" onClick={onclickRefresh}>Refresh</button>
+  </div>
+
+
+  <div className="ml-24">
+  <SearchBar />
+        <div className="">
+        {state?.namePets?.length > 0 && <SearchResultsList />}
+        {/* si se mueve esto a otro componente importar searchBar y searchResultList y ponerlo en este orden*/}
+        </div>
+
+  </div>
+     
+</div>
+
+ <Cards pets={state?.pets?.data} />
+      
+ {/* PAGINADO */}
+      <div>
         <Pagination />
       </div>
-      <Cards pets={state?.pets?.data} />
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
-      <div className={styles.divContainer}>
-        <div className={styles.text}>
-          <p>
-            ADOPT <br></br>
-            TODAY
-            <br></br>AND
-            <br></br>CHANGE
-            <br></br>A LIFE
-          </p>
+
+  {/* ADOPT AND SAVE A LIFE...  */}
+
+      <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-1 '>
+        <div className="flex items-center justify-end ">
+          <p className="titleRight w-72 pr-6 "> Adopt today and change a life</p>
+          <br />
+          <p className="titleRight"> </p>
         </div>
         <div>
-          <ul>
-            <li className={styles.list}>
-              FIND A FRIEND YOU WISH TO TAKE HOME.
-            </li>
-            <li className={styles.list}>
-              GO THROUGH OUR ADOPTION REQUIREMENTS.
-            </li>
-            <li className={styles.list}>SCHEDULE A VISIT TO THE SHELTER.</li>
-            <li className={styles.list}>
-              MEET THE PET AND COMPLETE THE PROCEDURE.
-            </li>
+          <ul className="steps steps-vertical">
+            <li className="step step-primary text text-neutral">Register</li>
+            <li className="step step-primary text text-neutral">Find a friend you wish to take home</li>
+            <li className="step text text-neutral">Go through our adoption requirements </li>
+            <li className="step text text-neutral">Schedule a visit to the shelter</li>
+            <li className="step text text-neutral">Meet your new furry friend and go home</li>
           </ul>
         </div>
+ 
+
+
+
       </div>
-      <Footer></Footer>
+
+
+
+ {/* FOOTER */}
+      
+      <div> 
+        <Footer /> 
+      </div>
+        
     </div>
   );
 };

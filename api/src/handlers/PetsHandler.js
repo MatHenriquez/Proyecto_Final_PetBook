@@ -99,6 +99,7 @@ const handleFilter = async (req, res) => {
 const handlerAdoptionForm = async (req, res) => {
   const request = req.body;
 
+  console.log(request)
   try {
     const response = await adoptionFormController(request);
     res.status(200).json(response);

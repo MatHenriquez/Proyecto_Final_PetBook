@@ -1,12 +1,12 @@
 import React from "react";
 import Card from "../CARD/Card";
 import { Link } from 'react-router-dom';
-import styles from '../CARDS/Cards.module.css';
+
 
 const Cards = ({ pets }) => {
   return (
-    <div>
-     <h1 className={styles.title}>Find & Adopt</h1>
+    <div className="grid grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-1 px-32 " >
+     {/* <h1 className={styles.title}>Find & Adopt</h1> */}
       {pets &&
         pets.map((pet, index) => {
           return (
@@ -24,8 +24,6 @@ const Cards = ({ pets }) => {
             />
           );
         })}
-        <div>
-        </div>
     </div>
   );
 };
