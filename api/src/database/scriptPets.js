@@ -141,7 +141,7 @@ async function loadPets(){
             
             await Pet.create(
                 {"name": "Bella",
-                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682120480/jn37kbhzeffcdvqwf2ii.jpgg",
+                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682308216/nlnbwkpyrmrwttbtfnqg.webp",
                 "adopted": "false",
                 "size": "Small",
                 "weight": 5,
@@ -292,6 +292,90 @@ async function loadPets(){
                 "age": 3,
                 "gender": "Male",
                 "specie": "Rabbit"
+                }
+            )
+            
+            await Pet.create(
+                {"name": "Maggie",
+                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682308380/kviph6orzzpipsrdtxd0.jpg",
+                "adopted": "false",
+                "size": "Medium",
+                "weight": 19,
+                "age": 8,
+                "gender": "Female",
+                "specie": "Dog"
+                }
+            )
+            
+            await Pet.create(
+                {"name": "Ruby",
+                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682308626/mypnbvgw1zpspbfsul4h.png",
+                "adopted": "false",
+                "size": "Small",
+                "weight": 5,
+                "age": 8,
+                "gender": "Female",
+                "specie": "Cat"
+                }
+            )
+            
+            await Pet.create(
+                {"name": "Tyson",
+                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682308831/yejabnx4whfc06logq5p.jpg",
+                "adopted": "false",
+                "size": "Medium",
+                "weight": 10,
+                "age": 7,
+                "gender": "Male",
+                "specie": "Dog"
+                }
+            )
+            
+            await Pet.create(
+                {"name": "Finn",
+                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682308991/dp7tc9rlhabxbhw33xag.jpg",
+                "adopted": "false",
+                "size": "Medium",
+                "weight": 10,
+                "age": 7,
+                "gender": "Male",
+                "specie": "Cat"
+                }
+            )
+            
+            await Pet.create(
+                {"name": "Murphy",
+                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682309085/garneppwwnj4alhfcbg3.jpg",
+                "adopted": "false",
+                "size": "Small",
+                "weight": 5,
+                "age": 3,
+                "gender": "Male",
+                "specie": "Cat"
+                }
+            )
+            
+            await Pet.create(
+                {"name": "Chloe",
+                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682309347/uegyrat8peustdnmyrpx.jpg",
+                "adopted": "false",
+                "size": "Small",
+                "weight": 1,
+                "age": 2,
+                "gender": "Female",
+                "specie": "Parrot"
+                }
+            )
+            
+            await Pet.create(
+                {"name": "Coco",
+                "image": "https://res.cloudinary.com/dhj72mkbp/image/upload/v1682309347/uegyrat8peustdnmyrpx.jpg",
+                "adopted": "false",
+                "size": "Small",
+                "weight": 1,
+                "age": 2,
+                "gender": "Female",
+                "specie": "Parrot"
                 }
             )
             

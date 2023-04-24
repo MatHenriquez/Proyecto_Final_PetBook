@@ -60,10 +60,12 @@ function Detail() {
                         <br />
 
                         <div className=''>
+                        <Link to={"/FormAdoption"}>
                         <div className="card-actions justify-center m-1">
                           <button className="btn btn-xs btn-accent">Adopt {pet.name}</button>
                         </div>
-
+                        </Link>
+                        
                         <div className="card-actions  justify-center m-1">
                           <button className="btn btn-xs btn-accent">Sponsor {pet.name}</button>
                         </div>
