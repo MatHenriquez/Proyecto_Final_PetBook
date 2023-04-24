@@ -6,7 +6,7 @@ const { PORT } = process.env;
 const loadPets = require('./src/dataBase/scriptPets.js')
 
 
-sequelize.sync({force:true }).then( async () => {
+sequelize.sync({alter:true }).then( async () => {
 
   await loadPets();
   console.log("estoy conectado a", sequelize.getDatabaseName());

@@ -18,7 +18,7 @@ import axios from "axios";
 import Successfully from "./Components/DONATION/Successfully";
 import Shop from "./COMPONENTS/SHOP/Shop";
 import FormHistory from "./COMPONENTS/HISTORY-ADOPTADOS/FormHistory";
-import Chatbot from "./COMPONENTS/CHATBOT/Chatbot";
+
 import Admin from "./COMPONENTS/ADMIN/Admin";
 
 
@@ -30,11 +30,11 @@ function App() {
 
     
     <div className="app">
-      <Chatbot />
+      
 
 
     
-    <div className="app">
+    
       {location.pathname !== "/" && <Chatbot /> }
 
       <Routes>
