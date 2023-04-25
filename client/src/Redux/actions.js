@@ -17,7 +17,7 @@ export const getPets = (params, page) => async (dispatch) => {
   console.log(params);
   try {
     if (params) {
-      const res = await axios.get(`http://localhost:3001/pets${params}`);
+      const res = await axios.get(`/pets${params}`);
       if (res.data.data.length === 0) {
         window.alert(`no search results pleace try another search/filter,
 if you try to sort in ascending or descending direction
@@ -32,7 +32,7 @@ you need to specify that you want to
     }
 
     if (!params && !page) {
-      const res = await axios.get(`http://localhost:3001/pets`);
+      const res = await axios.get(`/pets`);
       return dispatch({
         type: GET_PETS,
         payload: res.data,
@@ -58,7 +58,7 @@ export const setNamePets = () => {
 
 export const getPetsRandom = () => {
   return async function (dispatch) {
-    const largePets = await axios.get("http://localhost:3001/pets");
+    const largePets = await axios.get("/pets");
     const response = await axios.get(
       `http://localhost:3001/pets?page=${Math.floor(
         (Math.random() * largePets.data.count) / 2
@@ -86,9 +86,9 @@ export const fetchPetDetailSuccess = (id) => async (dispatch) => {
 export const registerUser = (userData) => async (dispatch) => {
   console.log(userData);
   try {
-    const res = await axios.post(`http://localhost:3001/users`, userData);
-    // localStorage.setItem('token', res.data.token);
+    const res = await axios.post(`/users`, userData);
 
+    localStorage.setItem('id', res.data.savedUser.id);
     console.log(res.data);
   } catch (err) {
     console.error(err);
@@ -120,7 +120,7 @@ export const sendEmail = (name, lastname, email, message) => {
       console.log("headers:", headers); // add this line
       axios
         .post(
-          "http://localhost:3001/contact",
+          "/contact",
           {
             name,
             lastname,
@@ -143,7 +143,7 @@ export const sendEmail = (name, lastname, email, message) => {
 
 export const sendAdoptionRequest = (userEmail, petName, message) => async (dispatch) => {
   try {
-    const response = await axios.post('http://localhost:3001/pets/adopt', {
+    const response = await axios.post('/pets/adopt', {
       userEmail,
       petName,
       message,

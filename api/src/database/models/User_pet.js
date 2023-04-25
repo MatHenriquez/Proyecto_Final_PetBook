@@ -8,7 +8,7 @@ const User_pet = (sequelize) => {
                 type: DataTypes.TEXT,
                 validate: {
                     len: {
-                        args: [0, 75],
+                        args: [0, 150],
                         msg: 'The "history" field must have a maximum of 75 words.'
                     }
                 },

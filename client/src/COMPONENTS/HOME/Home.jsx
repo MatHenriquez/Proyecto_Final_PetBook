@@ -10,6 +10,7 @@ import PreviewPetsAdoption from "../PREVIEW_PETS_ADOPTION/PreviewPetsAdoption";
 import { BiRightArrow, BiLeftArrow } from 'react-icons/bi';
 import HeaderLogin from '../HEADER/HeaderLogin';
 import Chatbot from '../CHATBOT/Chatbot'
+import Carousel from "../CAROUSEL/Carousel";
 
 
 
@@ -26,37 +27,6 @@ const Home = () => {
 
   // const itemsToShow = pets?.rows?.slice(0, 2);
   
-// CARRUSEL:
-const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-const handleNextClick = () => {
-  const nextIndex =
-    currentImageIndex === images.length - 3
-      ? 0
-      : currentImageIndex + 1;
-  setCurrentImageIndex(nextIndex);
-};
-
-const handlePrevClick = () => {
-  const prevIndex =
-    currentImageIndex === 0
-      ? images.length - 3
-      : currentImageIndex - 1;
-  setCurrentImageIndex(prevIndex);
-};
-
-const mascotasFiltradas = mascotas.filter(mascota => mascota.adopted);
-const images = mascotasFiltradas.map(mascota => mascota.image);
-const currentMascotas = mascotasFiltradas.slice(currentImageIndex, currentImageIndex + 3);
-
-// UseEffect para hacer el carrusel automático
-useEffect(() => {
-  const interval = setInterval(() => {
-    handleNextClick();
-  }, 6000); // cambiar el valor  para ajustar la velocidad del carrusel
-
-  return () => clearInterval(interval);
-}, [currentImageIndex]); // volver a llamar el useEffect cuando currentImageIndex cambie
 
 
   return (
@@ -95,33 +65,7 @@ useEffect(() => {
     <div className="pb-7 items-center rounded-full h-[90vh] flex justify-center">
         <h2 className="titleRight">adoption stories</h2>
 
-    {mascotasFiltradas.length > 0 ? (
-      <div className='mx-auto '>
-                <div className="carousel carousel-end rounded-box w-4/5 h-4/5 mx-auto my-auto p-3 justify-evenly">
-                      
-              {currentMascotas.map((mascota, index) => (
-                
-              <div key={index} className={`carousel-item${index === 0 ? " active" : ""} relative float-left md:w-1/3`}> 
-              {/*  se utiliza para establecer la clase active en el primer elemento del carrusel. La clase active se utiliza para indicar cuál es la imagen actualmente visible en el carrusel*/}
-              
-                    <img className="carousel-item object-cover cursor-pointer transform:rotate-180 rounded-3xl w-[20rem] h-[10rem]"
-                      src={mascota.image}
-                      alt={`Image ${currentImageIndex + 1}`}
-                    />
-              </div>
-                ))}
-
-
-                </div>
-                <div className="absoulte flex transform  p-8 items-center ml-60 ">
-                          <a onClick={handlePrevClick} className="btn btn-circle btn-accent"> ❮</a> 
-                          <a onClick={handleNextClick} className="btn btn-circle btn-accent">❯</a>
-                      </div>
-            
-          </div>
-        ) : (
-          <p>No hay mascotas disponibles</p>
-        )}
+    <Carousel />
     </div>
       
     {/* COMPONENTE ABOUT */}
@@ -188,10 +132,6 @@ useEffect(() => {
   </div>
 
 
-          {/* chatbot: training in process*/}
-
-{/* <Chatbot /> */}
-
 
     <div>
     <Footer className="mt-8"/>
@@ -205,4 +145,3 @@ useEffect(() => {
 };
 
 export default Home;
-

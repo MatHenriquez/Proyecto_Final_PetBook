@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import Header from "../HEADER/Header";
+import HeaderLogin from "../HEADER/HeaderLogin";
+import Footer from "../FOOTER/Footer";
+import {Formik,Form,Field,ErrorMessage} from 'formik';
 
 
 
@@ -85,25 +89,36 @@ function FormHistory() {
   }, []);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} >
 
-        <label>Your name:</label>
-        <input type="text" name="name" value={history.name} onChange={handleOnChange} placeholder='  name...' />
+    <>
+        <div> {localStorage.getItem('token') ? <HeaderLogin className='mb-4' /> : <Header className="mb-4" /> } </div>
+        <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
+
+          <div  className='flex flex-col justify-center'> 
+            <div >
+              <h1 className="subtitle">WRITE YOUR STORY</h1>
+            </div>
+
+            
+   
+      <form className='max-w-[400px] w-full mx-auto rounded-lg bg-white  p-4' onSubmit={handleSubmit} >
+
+        <label className='inputs'>Your Name:</label>
+        <input className='textareas' type="text" name="name" value={history.name} onChange={handleOnChange} placeholder=' Write your name...' />
         <br /><br />
 
-        <label>History:</label>
+        <label className='inputs'>Story:</label>
         <br />
-        <textarea name="hist" value={history.hist} onChange={handleOnChange} placeholder='Write your history...' cols="50" rows="10" />
+        <textarea className='textareas' name="hist" value={history.hist} onChange={handleOnChange} placeholder='Write your story...' cols="50" rows="10" />
         <br /><br />
 
-        <label>Image:</label>
-        <input type="file" name="image" onChange={uploadImage} />
+        <label className='inputs'>Image:</label>
+        <input className='textareas' type="file" name="image" onChange={uploadImage} />
         <br /><br />
 
-        <label>Your pets:</label>
-        <select name="idPet" value={history.pet} onChange={handleOnChange}>
-          <option>choose a pet</option>
+        <label className='inputs'>Your pets:</label>
+        <select className='seleccion' name="idPet" value={history.pet} onChange={handleOnChange}>
+          <option>Choose a pet</option>
           {
             pets.length && pets.map((item, index) => {
               return (
@@ -112,15 +127,30 @@ function FormHistory() {
             })
           }
         </select>
-        <br /><br />
-        <input type="submit" value="Submit" />
+        <div className="buttonSubtmit text-center ">
+        <button className=""  type ="submit ">SEND</button>
+      </div>
       </form>
 
       {
-        status === "Loading" ? <h6>Loading...</h6> : <h6>{status}</h6>
+        
+        status === "Loading" ? <h6 className="text-green-300 font-bold">Loading...</h6> : <h6>{status}</h6>
       }
 
     </div>
+
+{/* IMAGEN */}
+            <div className='hidden sm:block'>  
+              <img className='w-[100%] h-full  object-cover' src="creaTuHistoria.jpeg" alt="perro en computadora" />
+            </div>
+        </div>
+
+        <div>
+          <Footer />
+        </div>
+        </>
+
+
   )
 }
 

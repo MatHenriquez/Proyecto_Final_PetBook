@@ -1,4 +1,4 @@
-const { Email, User } = require('../DataBase/db');
+const { Email, User } = require('../database/db');
 const { Op } = require('sequelize');
 
 

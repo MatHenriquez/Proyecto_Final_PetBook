@@ -13,12 +13,17 @@ import FormContact from './COMPONENTS/FORMS/FormContact';
 import './index.css'
 import FormCreatePet from "./COMPONENTS/FORMS/FormCreatePet";
 import FormAdoption from './COMPONENTS/FORMS/FormAdoption'
+import Chatbot from "./COMPONENTS/CHATBOT/Chatbot";
+import axios from "axios";
 import Successfully from "./Components/DONATION/Successfully";
 import Shop from "./COMPONENTS/SHOP/Shop";
 import FormHistory from "./COMPONENTS/HISTORY-ADOPTADOS/FormHistory";
-import Chatbot from "./COMPONENTS/CHATBOT/Chatbot";
+
 import Admin from "./COMPONENTS/ADMIN/Admin";
 
+
+//Instancia de axios.
+axios.defaults.baseURL = "https://proyectofinalpetbook-production.up.railway.app"
 
 function App() {
 
@@ -28,7 +33,10 @@ function App() {
 
     
     <div className="app">
+
       {location.pathname !== "/" && <Chatbot /> }
+
+
       <Routes>
         <Route index element={<Landing />} />
         <Route path="/header" element={<Header />} />
@@ -39,7 +47,7 @@ function App() {
         <Route path="/AvaliblePetsAdoption" element={<AvaliblePetsAdoption/>} />
         <Route path="/register" element={<Registration />} />
         <Route path='/about' element={<About />} />
-        <Route path="/FormAdoption" element={<FormAdoption />} />
+        <Route path="/FormAdoption/:id" element={<FormAdoption />} />
         <Route path="/FormContact" element={<FormContact/>} />
         <Route path="/FormCreatePet" element={<FormCreatePet/>}/>
         <Route path="/FormHistory" element={<FormHistory /> } />
