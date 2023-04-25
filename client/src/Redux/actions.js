@@ -157,7 +157,9 @@ export const sendAdoptionRequest = (userEmail, petName, message) => async (dispa
 };
 
 
-
+export const toggleFavorite = (pet) => async (dispatch) =>{
+ 
+}
 
 
 
