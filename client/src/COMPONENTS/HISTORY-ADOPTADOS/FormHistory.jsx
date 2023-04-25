@@ -145,9 +145,9 @@ function FormHistory() {
             </div>
         </div>
 
-        <div>
+        {/* <div>
           <Footer />
-        </div>
+        </div> */}
         </>
 
 

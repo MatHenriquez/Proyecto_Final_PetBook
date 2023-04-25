@@ -1,7 +1,24 @@
 const { Product, Category, User } = require('../database/db');
 const searchProductByNameController = require("../controllers/searchProductByNameController");
 const searchAllProductsController = require("../controllers/searchAllProductsController");
-const postProductController = require('../controllers/postProductController');
+const {postProductController, writeProductosDB} = require('../controllers/postProductController');
+
+
+
+const postwriteProductos = async(req, res) => {
+  try {
+    const data = await writeProductosDB();
+    if(data.error) throw new Error(data.error);
+
+    res.status(200).send(data)
+  } catch (error) {
+    res.status(404).send(error);
+  }
+}
+
+
+
+
 
 const getHandlerProducts = async (req, res) => {
   try {
@@ -116,5 +133,6 @@ module.exports = {
   getHandlerProducts,
   postProductHandler,
   putProductHandler,
-  deleteProductHander
+  deleteProductHander,
+  postwriteProductos
 };

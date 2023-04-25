@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getHandlerProducts, postProductHandler, putProductHandler, deleteProductHander } = require("../handlers/ProductsHandler")
+const { getHandlerProducts, postProductHandler, putProductHandler, deleteProductHander, postwriteProductos } = require("../handlers/ProductsHandler")
 const { check } = require('express-validator');
 const { validateAttributes } = require('../middlewares/validateAttributes');
 const { validateJWT } = require('../middlewares/validateJWT');
@@ -7,6 +7,9 @@ const { isAdminRole, isRole } = require('../middlewares/validateRoles');
 const { productExists, categoryExists } = require("../helpers/dbValidators");
 
 const productsRoutes = Router();
+
+productsRoutes.post('/writeProducts', postwriteProductos);
+
 
 // get all products - public
 productsRoutes.get("/", getHandlerProducts);
@@ -43,5 +46,7 @@ productsRoutes.delete('/:id', [
     check('id').custom(productExists),
     validateAttributes
 ],deleteProductHander);
+
+
 
 module.exports = productsRoutes;
