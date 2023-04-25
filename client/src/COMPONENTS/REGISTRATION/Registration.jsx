@@ -11,6 +11,7 @@ const Registration = () => {
     nickname: '',
     email: '',
     password: '',
+    passwordConfirmation: '',
     role: 'user_role',
   });
 
@@ -24,37 +25,28 @@ const Registration = () => {
     });
   };
 
-  // const handleRepeatPasswordChange = (e) => {
-  //   setFormState({
-  //     ...formState,
-  //     repeatPassword: e.target.value
-  //   });
-  // };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (formState.password !== formState.repeatPassword) {
-  //     alert('Passwords do not match');
-  //   } else {
-  //     dispatch(registerUser(formState)); //
-  //   }
-  // }
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (formState.password === 'repeatPassword') {    
-      console.log('Las contraseñas coinciden');      
+  
+    if (formState.password !== formState.passwordConfirmation) {    
+      alert('Las contraseñas no coinciden');      
     } else {     
-      console.log('Las contraseñas no coinciden');
+      dispatch(registerUser({
+        nickname: formState.nickname,
+        password: formState.password,
+        email: formState.email,
+        role: formState.role
+      }));
+      
+      // localStorage.setItem('token', response.data.token);
+      // console.log('token' + localStorage.setItem('token'));
+
+      
+      navigate('/login');
     }
 
-
-    const response= dispatch(registerUser(formState))
-    console.log(response);
-    navigate('/home')
   }
+  console.log('password ' + formState.password + '   passwordConfirmation ' + formState.passwordConfirmation);
 
   return (
     <div>
@@ -126,12 +118,14 @@ const Registration = () => {
         {/* Repeat Password: */}
         <input 
         type="password" 
-        name="repeatPassword" 
+        name="passwordConfirmation" 
         placeholder='Repeat Password'
         onChange={handleChange} 
         required 
-        className='inputs' />
+        className='inputs' 
+        />
       </label>
+      
     </div>
 
     <div className='divForminput'>

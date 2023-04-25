@@ -247,7 +247,7 @@ function About() {
         <a className="group relative bg-black h-5/6 lg:h-full flex justify-center items-center">
                     <img alt="Camilo-foto" src="/.jpg" className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50" />
 
-                    <div className="relative p-2 sm:p-6 lg:p-6">  
+                    <div className="relative p-2 sm:p-6 lg:p-4">  
                       <div className="mt-20 sm:mt-20 lg:mt-20">
                         <div className="transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100 translate-y-96">
                         <p className="text-xl font-bold text-white sm:text-2xl">Camilo</p>
@@ -274,12 +274,16 @@ function About() {
 
     </div>
 
+<div className=' w-screen  bottom-0 '>
+< Footer />
+   </div>
 
 
 
-<div className="mx-auto mt-10 bg-white w-4/5"></div>
 
-    <Footer />
+{/* <div className="mx-auto mt-10 bg-white w-4/5"></div> */}
+
+
 </div>
   )
 }

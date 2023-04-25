@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <div>
 
-<footer className="footer items-center p-4 bg-primary text-neutral rounded-xl">
+<footer className="footer items-center p-4 bg-primary text-neutral rounded-xl ">
   <div className="items-center grid-flow-col">
     <img src="patita1.png" alt="" width="36" height="36" />
     <p className="letter-footer">PETBOOK - Copyright © 2023 - All right reserved</p>
