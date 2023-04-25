@@ -22,6 +22,9 @@ import FormHistory from "./COMPONENTS/HISTORY-ADOPTADOS/FormHistory";
 import Admin from "./COMPONENTS/ADMIN/Admin";
 
 
+//Instancia de axios.
+axios.defaults.baseURL = "https://proyectofinalpetbook-production.up.railway.app"
+
 function App() {
 
   const location = useLocation();
@@ -30,12 +33,9 @@ function App() {
 
     
     <div className="app">
-      
 
-
-    
-    
       {location.pathname !== "/" && <Chatbot /> }
+
 
       <Routes>
         <Route index element={<Landing />} />
