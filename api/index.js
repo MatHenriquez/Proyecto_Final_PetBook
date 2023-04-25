@@ -3,7 +3,8 @@ const { sequelize } = require("./src/database/db.js");
 const { Role } = require('./src/database/db.js');
 require("dotenv").config();
 const { PORT } = process.env;
-const loadPets = require('./src/dataBase/scriptPets.js')
+const loadPets = require('./src/database/scriptPets.js')
+
 
 
 sequelize.sync({alter:true }).then( async () => {
