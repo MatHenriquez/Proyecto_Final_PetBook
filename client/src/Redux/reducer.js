@@ -7,7 +7,7 @@ const initialState = {
   error: null,
 
   pets: [],
-  petsRandomHome :[],
+  petsRandomHome:[],
   pet:{},
   namePets : [],
 
@@ -25,7 +25,9 @@ const initialState = {
   //Form de Contacto
 loading: false,
 success: null,
-error: null
+error: null,
+
+favourites: []
 
 };
 

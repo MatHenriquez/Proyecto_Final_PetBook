@@ -13,6 +13,8 @@ import FilterAndOrder from "../FILTER_AND_ORDER/FilterAndOrder";
 import SearchResultsList from "../SEARCH/SearchResultList";
 import { createSearchParams } from "react-router-dom";
 
+
+
 const AvaliblePetsAdoption = () => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
