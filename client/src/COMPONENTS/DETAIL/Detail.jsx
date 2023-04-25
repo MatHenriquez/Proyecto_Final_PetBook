@@ -104,7 +104,7 @@ function Detail() {
   
         </div>
 
-      )}
+      
       <br>
       </br>
         <Link to = {`/FormAdoption/${id}`}>
