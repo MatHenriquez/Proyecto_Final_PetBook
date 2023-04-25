@@ -11,15 +11,22 @@ mercadopago.configure({
 });
 
 //Routes
-app.get('/', (req, res) =>{
+app.post('/preapproval', (req, res) =>{
     console.log(req.query);
     // Crea un objeto de preferencia
     let preference = {
         items: [
         {
-            title: req.query.title,
-            unit_price: parseInt(req.query.price),
-            quantity: 1,
+            // preapproval_plan_id: "",
+            reason: "Sponsor pet from Petbook",
+            payer_email: "matias.henriquez.dev@gmail.com",
+            card_token_id: req.body.token,
+            auto_recurring: {
+                frequency: 1,
+                frequency_type: "months",
+                transaction_amount: 1500,
+                currency_id: "ARS"
+            }
         },
         ],
         back_urls: {
