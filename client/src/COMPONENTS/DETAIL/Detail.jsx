@@ -27,9 +27,9 @@ function Detail() {
       .then(() => setLoading(false));
   }, [id]);
 
-  const handleSelectPet = (e) => {
+  const handleSelectMascota = (e) => {
     //e.preventDefault();
-    setSelectedPet(pet); // update state variable with pet's data
+    setSelectedMascota(pet); // update state variable with pet's data
   };
 
   if(pet){
@@ -42,11 +42,6 @@ function Detail() {
     
     <div  className="bg-[url('/backdonations1.png')] bg-no-repeat w-[100hv] h-[100hv]">
         
-
-
-        <div>
-          {localStorage.getItem('token') ? <HeaderLogin className='mb-4' /> : <Header className="mb-4" /> }    
-        </div>
 
 
         <div className='flex items-center justify-center'>
@@ -77,9 +72,10 @@ function Detail() {
                         <br />
 
                         <div className=''>
-                        <Link to={"/FormAdoption"}>
+                        <Link to = {`/FormAdoption/${id}`}>
                         <div className="card-actions justify-center m-1">
-                          <button className="btn btn-xs btn-accent">Adopt {pet.name}</button>
+                        <button onClick={handleSelectPet} className="btn btn-xs btn-accent">ADOPT ME!</button>
+                        {selectedPet && <AdoptionForm pet={pet} userEmail={userEmail} />} {/* pass selected pet's data as prop */} 
                         </div>
                         </Link>
                         
@@ -87,11 +83,6 @@ function Detail() {
                           <button className="btn btn-xs btn-accent">Sponsor {pet.name}</button>
                         </div>
                         
-                        <Link to={"/avaliblePetsAdoption"}>
-                        <div className="card-actions justify-center m-1">
-                          <button className="btn btn-xs btn-accent">Back</button>
-                        </div>
-                        </Link>
 
                         </div>
 
@@ -104,24 +95,7 @@ function Detail() {
   
         </div>
 
-      )}
-      <br>
-      </br>
-        <Link to = {`/FormAdoption/${id}`}>
-         <button onClick={handleSelectPet} className={styles.buttonAdoptMe}>ADOPT ME!</button>
-         {selectedPet && <AdoptionForm pet={pet} userEmail={userEmail} />} {/* pass selected pet's data as prop */} 
-        </Link>
-        
-        <br>
-        </br>
-       <Link>
-        <button className={styles.buttonSponsor}>SPONSOR ME!</button>
-       </Link>
-        
 
-
-
-       <div className=' mt-24'><Footer/></div>
 
     </div>
     

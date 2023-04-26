@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import Login from "../LOGIN/Login";
@@ -48,9 +49,9 @@ export default function Landing() {
                 <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                 <Login />
               </div>
-         </div>
+            </div>
 
-</div>
+        </div>
       )}
 
 

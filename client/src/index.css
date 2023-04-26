@@ -28,10 +28,12 @@
 .titleLeft{
  @apply font-normal text-neutral text-4xl uppercase tracking-widest leading-loose text-left ml-7 font-['candara']
 }
-   /* CHECKBOX*/
+   
+
+/* CHECKBOX*/
  
 
-   .form-checkbox:focus-visible {
+.form-checkbox:focus-visible {
     outline: 0;
     border-color:white;
     box-shadow: 0 0 0 2px white;

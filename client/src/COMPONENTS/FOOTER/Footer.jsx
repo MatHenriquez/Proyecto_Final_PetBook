@@ -4,14 +4,13 @@ import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt} from "react-icons/fa"
 
 export default function Footer() {
   return (
-    <div>
 
-<footer className="footer items-center p-4 bg-primary text-neutral rounded-xl">
+<footer className="footer items-center p-4 bg-primary text-neutral ">
   <div className="items-center grid-flow-col">
     <img src="patita1.png" alt="" width="36" height="36" />
     <p className="letter-footer">PETBOOK - Copyright © 2023 - All right reserved</p>
   </div> 
-  <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+  <div className="grid-flow-col gap-4 place-self-center lg:justify-self-end">
    
     <a href="https://www.facebook.com"> <FaFacebookF  className="iconsfooter"/> </a> 
 
@@ -25,6 +24,5 @@ export default function Footer() {
   </div>
 </footer>
 
-    </div>
   );
 }

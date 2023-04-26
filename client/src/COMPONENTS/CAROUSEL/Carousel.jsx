@@ -96,7 +96,7 @@ const Carousel = () => {
      
    </div>
  ) : (
-   <p>No hay mascotas disponibles</p>
+   <p className="text ml-3">We are uploading the adoption stories... </p>
  )}
 </div>
 )}
