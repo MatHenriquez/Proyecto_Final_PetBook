@@ -43,9 +43,10 @@ const FormContact = () => {
    
     
     return (
-        <>
+        <div className="h-full">
         <div> {localStorage.getItem('token') ? <HeaderLogin className='mb-4' /> : <Header className="mb-4" /> } </div>
-        <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
+        
+        <div className='grid grid-cols-1 lg:grid-cols-2 h-full w-full'>
 
           <div  className='flex flex-col justify-center'> 
             <div >
@@ -191,22 +192,22 @@ const FormContact = () => {
             { formSubmit && <p className="succes">Form was successfully submitted</p>}
             </div>
           
-        </Form>
+            </Form>
                 )}
           
             </Formik>
           </div>
 
             {/* IMAGEN */}
-            <div className='hidden sm:block'>  
-              <img className='w-[100%] h-full  object-cover' src="perrocomputadora.jpeg" alt="perro en computadora" />
+            <div className='hidden lg:flex lg:items-center lg:h-screen'>  
+              <img className='w-[100%] object-cover  items-center' src="perrocomputadora.jpeg" alt="perro en computadora" />
             </div>
         </div>
         <div>
           <Footer />
         </div>
 
-        </>
+        </div>
 
 
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createSearchParams } from "react-router-dom";
 import { getPets, getNamePets, setNamePets } from "../../Redux/actions.js";
 
@@ -58,19 +58,20 @@ export default function SearchBar() {
 
   return (
     <nav >
-      <div className="rounded-full">
+      <div className="rounded-full input-group">
       <input      
         id="search"
         type="text"
         name="name"
         value={name}
-        autocomplete="off"
-        placeholder="  Type here..."
+        autoComplete="off"
+        placeholder=" Look for name..."
         onChange={(e) => handleInputChange(e)} onKeyDown={(e) => handleKeyDown(e)}
-        className=" rounded-full"
+        className="rounded-full input-xs"
+
         
       />
-      <button className="btn btn-secondary btn-circle btn-xs" onClick={(e) => handleSubmit(e)}>🔎</button>
+      <button className=" btn  btn-accent btn-circle btn-xs" onClick={(e) => handleSubmit(e)}>🔎</button>
 
       </div>
 
@@ -78,14 +79,3 @@ export default function SearchBar() {
   );
 }
 
-// console.log(value)
-// fetch(`http://localhost:3001/pets/name?name=${value}`)
-//   .then((response) => response.json())
-//   .then((petsName) => {
-//   console.log(petsName);
-
-//   dispatch(getNamePets(petsName))
-//   })
-//   .catch(error =>{
-//   return console.log(error);
-//   })

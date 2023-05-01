@@ -40,7 +40,7 @@ const handlerPets = async (req, res) => {
 };
 
 const handlerPetsDetail = async (req, res) => {
-  let { id } = req.params;
+  let { id } = req.params||req.query;
 
   try {
     const response = await getPetsDetailController(id);

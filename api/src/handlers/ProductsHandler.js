@@ -64,7 +64,7 @@ const putProductHandler = async (req, res) => {
         plain: true
     });
 
-    res.status(200).json({updatedCategory})    ;
+    res.status(200).json({updatedProduct})    ;
 } catch (error) {
     res.status(500).json({error: error.message});
 }
@@ -113,21 +113,20 @@ const deleteProductHander = async (req, res) => {
 
 }
 
-const filterProductsHandler = async (req, res) => {
-  const filters = req.query;
+// const filterProductsHandler = async (req, res) => {
+//   const filters = req.query;
 
-  try {
-    const response = await filterProductsController(filters);
-    res.status(200).send(response);
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-}
+//   try {
+//     const response = await filterProductsController(filters);
+//     res.status(200).send(response);
+//   } catch (error) {
+//     res.status(400).send(error.message);
+//   }
+// }
 
 module.exports = { 
   getHandlerProducts,
   postProductHandler,
   putProductHandler,
-  deleteProductHander,
-  filterProductsHandler
+  deleteProductHander
 };

@@ -3,13 +3,16 @@ export const FETCH_PET_DETAIL_SUCCESS = 'FETCH_PET_DETAIL_SUCCESS';
 export const GET_PETS_RAMDON_HOME = "GET_PETS_RAMDON_HOME";
 export const GET_PET_NAME = "GET_PET_NAME";
 export const SET_PET_NAME = "SET_PET_NAME";
+export const VERIFY_ADMIN_ROLE = "VERIFY_ADMIN_ROLE"
+export const GET_USERS = "GET_USERS"
 
 // export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM'
-
-
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const SEND_EMAIL = 'SEND_EMAIL';
 export const SEND_ADOPTION_REQUEST ="SEND_ADOPTION_REQUEST";
-
+export const ADD_FAVORITE = "ADD_FAVORITE";
+export const DELETE_FAVORITE = "DELETE_FAVORITE";
+// actiones del STORE
+export const GET_PRODUCTS ='GET_PRODUCTS';
 

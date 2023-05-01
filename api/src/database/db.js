@@ -2,29 +2,31 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
+
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DEPLOY } = process.env;
 
+//DB local
+// const sequelize = new Sequelize(
+//   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
 
-  // const sequelize = new Sequelize(
-  //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-  //   {
-  //     logging: false,
-  //     native: false,
-  //   }
-  // );
-
-const sequelize = new Sequelize(
- DB_DEPLOY,
- {
+//Render
+const sequelize = new Sequelize(DB_DEPLOY, {
   logging: false,
-   native: false,
-    dialectOptions: {
-      ssl:{
-        require: true,
-      }
-    }
- }
-);
+  native: false,
+  dialectOptions: {
+    ssl: {
+      require: true,
+    },
+  },
+});
+
+//Railway
+
+// const sequelize = new Sequelize(
+//  DB_DEPLOY,
+//  {
+//   logging: false,
+//    native: false,
 
 const basename = path.basename(__filename);
 
@@ -50,11 +52,10 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-
 const { Shelter } = sequelize.models;
-const { Pet } = sequelize.models
+const { Pet } = sequelize.models;
 const { Product } = sequelize.models;
-const { User } = sequelize.models
+const { User } = sequelize.models;
 const { Category } = sequelize.models;
 
 const { User_pet } = sequelize.models;
@@ -63,54 +64,70 @@ const { Email } = sequelize.models;
 
 const { Adopt } = sequelize.models;
 
+const { Donations } = sequelize.models;
+const { Favorite } = sequelize.models;
+
+
+
 // model relations
 
-// Adopt user pet
-Adopt.belongsTo(User);
-Adopt.belongsTo(Pet);
+// Adopt user pet associations
+User.hasMany(Adopt); // a user can have many adoptions
+Adopt.belongsTo(User); // an adoption record belongs to a user
+Adopt.belongsTo(Pet); // an adoption record belongs to a Pet
+Pet.hasOne(Adopt); // a pet can be adopted by one user
 
 // Email / User
-Email.belongsTo(User, { foreignKey: 'userId', as: 'userEmail'});
-User.hasMany(Email, { foreignKey: 'userId'});
+Email.belongsTo(User, { foreignKey: "userId", as: "userEmail" });
+User.hasMany(Email, { foreignKey: "userId" });
 
 // User / Pet M : N
 User.belongsToMany(Pet, { through: User_pet });
 Pet.belongsToMany(User, { through: User_pet });
 
-User.hasMany(User_pet, { foreignKey: 'userId' });
-User_pet.belongsTo(User, { foreignKey: 'userId' });
+User.hasMany(User_pet, { foreignKey: "userId" });
+User_pet.belongsTo(User, { foreignKey: "userId" });
 
 User_pet.belongsTo(Pet);
 Pet.belongsToMany(User, { through: User_pet });
 
-
-
 // User / Category 1:1
-Category.belongsTo(User, { foreignKey: 'userId' });   // userId is the id of the user that creates the category
+Category.belongsTo(User, { foreignKey: "userId" }); // userId is the id of the user that creates the category
 
-Product.belongsTo(Category, { foreignKey: 'categoryId', as: 'productCategory' });
+Product.belongsTo(Category, {
+  foreignKey: "categoryId",
+  as: "productCategory",
+});
 //Product.belongsTo(Category, { foreignKey: 'categoryId', as: 'productCategoryId'}); // categoryId of the product
-Category.hasMany(Product, { foreignKey: 'categoryId'}); // Use "categoryId" instead of "productId"
+Category.hasMany(Product, { foreignKey: "categoryId" }); // Use "categoryId" instead of "productId"
 
-
-Product.belongsTo(User, { foreignKey: 'userId' });
+Product.belongsTo(User, { foreignKey: "userId" });
 
 // User / Product M:N
-User.belongsToMany(Product, { through: 'user_product' });
+User.belongsToMany(Product, { through: "user_product" });
 //Product.belongsToMany(User, { through: 'user_product' });
-Product.belongsTo(User, { foreignKey: 'userId'}); // userId is the id of the user that creates the product
+Product.belongsTo(User, { foreignKey: "userId" }); // userId is the id of the user that creates the product
 
 // User / Shelter 1: N
-Shelter.hasMany(User, { foreignKey: 'userId' });
-User.belongsTo(Shelter, { foreignKey: 'userId' });
+Shelter.hasMany(User, { foreignKey: "userId" });
+User.belongsTo(Shelter, { foreignKey: "userId" });
 
 // Pet / Products : 1:N
-Pet.hasMany(Product, { foreignKey: 'petId' });
-Product.belongsTo(Pet, { foreignKey: 'petId' });
+Pet.hasMany(Product, { foreignKey: "petId" });
+Product.belongsTo(Pet, { foreignKey: "petId" });
 
-// Shelter / Pet 1 : N 
-Shelter.hasMany(Pet, { foreignKey: 'shelterId' });
-Pet.belongsTo(Shelter, { foreignKey: 'shelterId' });
+// Shelter / Pet 1 : N
+Shelter.hasMany(Pet, { foreignKey: "shelterId" });
+Pet.belongsTo(Shelter, { foreignKey: "shelterId" });
+
+//Donations - User --- 1:N
+Donations.belongsToMany(User, { through: "user_donations" });
+User.hasMany(Donations, { foreignKey: "donationId" });
+
+//Favorites -N-M
+
+User.belongsToMany(Favorite,{  through: "user_favorite"});
+Favorite.belongsToMany(User,{ through: "users_favorite" });
 
 module.exports = {
   ...sequelize.models,

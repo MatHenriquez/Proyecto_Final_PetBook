@@ -58,7 +58,7 @@ const Pagination = () => {
             ‹
           </div>
           <div className="btn btn-ghost text-neutral text-l mt-[0.18rem]">
-            {state?.pets?.currentPage} / {state.pets.totalPage}
+            {state?.pets?.currentPage +1} / {state.pets.totalPage +1}
           </div>
           <div
             onClick={() => handlerNext()}

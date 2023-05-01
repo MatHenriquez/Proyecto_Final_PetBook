@@ -2,6 +2,7 @@ const bcryptjs = require('bcryptjs'); // npm i bcryptjs
 const { User } = require('../database/db');
 const { Op } = require('sequelize');
 const nodemailer = require('nodemailer');
+const verifyRoleControler = require ("../controllers/verifyUserRollController.js")
 
 const userHandlerGet = async (req, res) => {
     try {
@@ -129,9 +130,24 @@ const userHandlerDelete = async (req, res) => {
     }
 };
 
+
+
+const userHandlerVerifyAdminRole = async (req,res) =>{
+const {id} = req.params
+console.log(id);
+
+try {
+    const response = await verifyRoleControler(id)
+    res.status(200).json(response)
+} catch (error) {
+    res.status(400).json(error)
+}
+}
+
 module.exports = {
     userHandlerGet,
     userHandlerPost,
     userHandlerPut,
-    userHandlerDelete
+    userHandlerDelete,
+    userHandlerVerifyAdminRole
 }

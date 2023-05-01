@@ -51,8 +51,27 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       description: {
+        type: DataTypes.TEXT,
+      },
+      weight: {
+        type: DataTypes.FLOAT,
+      },
+      size: {
         type: DataTypes.STRING,
       },
+      specie: {
+        type: DataTypes.ENUM("Cat", "Dog", "Rabbit", "Guinea Pig", "Parrot"),
+        allowNull: true,
+      },
+      consumption_age: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      discount: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      }
     },
     { timestamps: false }
   );

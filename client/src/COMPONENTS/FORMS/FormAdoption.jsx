@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useParams } from 'react-router-dom';
+import Header from "../HEADER/Header";
+import HeaderLogin from "../HEADER/HeaderLogin";
+import Footer from "../FOOTER/Footer";
+
 
 const adoptionSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -46,7 +50,7 @@ const AdoptionForm = (props) => {
             petId: id,
           }),
         };
-        const response = await fetch('/adoptions', requestOptions);
+        const response = await fetch('http://localhost:3001/adoptions', requestOptions);
         const data = await response.json();
         console.log(data);
         resetForm();
@@ -58,30 +62,47 @@ const AdoptionForm = (props) => {
   });
 
   return (
+    <div>
+    <div> {localStorage.getItem('token') ? <HeaderLogin className='mb-4' /> : <Header className="mb-4" /> }</div>
+    
+    <div className='grid grid-cols-1 lg:grid-cols-2 h-full w-full'>
+   
+   <div  className='flex flex-col justify-center'> 
+   
+      <div>       
+        <p className="titleCenter">Hello <strong>{nickname}</strong>, </p>
+        <p className="subtitle" >thank you for your interest.</p>
+        <p className="subtitle" >Please enter your data.</p>
+      </div>
+      <div className='max-w-[400px] w-full mx-auto rounded-lg bg-white p-4'>
     <form onSubmit={formik.handleSubmit}>
-      <p>Hello <strong>{nickname}</strong>, thank you for your interest. Please enter your data.</p>
-      <div>
-        <label htmlFor="name">Name:</label>
+      <div className='divForminput'>
+        
         <input
           id="name"
           name="name"
           type="text"
           value={formik.values.name}
           onChange={formik.handleChange}
+          placeholder='Name'
+          className='inputs'
+          
         />
         {formik.touched.name && formik.errors.name ? (
           <div>{formik.errors.name}</div>
         ) : null}
       </div>
 
-      <div>
-        <label htmlFor="email">Email:</label>
+      <div className='divForminput'>
+        {/* <label htmlFor="email">Email:</label> */}
         <input
           id="email"
           name="email"
           type="email"
           value={formik.values.email}
           onChange={formik.handleChange}
+          placeholder='Email:'
+          className='inputs'
 
         />
         {formik.touched.email && formik.errors.email ? (
@@ -89,74 +110,84 @@ const AdoptionForm = (props) => {
         ) : null}
       </div>
 
-      <div>
-        <label htmlFor="address">Address:</label>
+      <div className='divForminput'>
+        {/* <label htmlFor="address">Address:</label> */}
         <input
           id="address"
           name="address"
           type="text"
           value={formik.values.address}
           onChange={formik.handleChange}
+          placeholder='Adress:'
+          className='inputs'
         />
         {formik.touched.address && formik.errors.address ? (
           <div>{formik.errors.address}</div>
         ) : null}
       </div>
 
-      <div>
-        <label htmlFor="postalCode">Postal Code:</label>
+      <div className='divForminput'>
+        {/* <label htmlFor="postalCode">Postal Code:</label> */}
         <input
           id="postalCode"
           name="postalCode"
           type="text"
           value={formik.values.postalCode}
           onChange={formik.handleChange}
+          placeholder='Postal Code:'
+          className='inputs'
         />
         {formik.touched.postalCode && formik.errors.postalCode ? (
           <div>{formik.errors.postalCode}</div>
         ) : null}
       </div>
 
-      <div>
-        <label htmlFor="age">Age:</label>
+      <div className='divForminput'>
+        {/* <label htmlFor="age">Age:</label> */}
         <input
           id="age"
           name="age"
           type="number"
           value={formik.values.age}
           onChange={formik.handleChange}
+          placeholder='Age:'
+          className='inputs'
         />
       </div>
 
-<div>
-  <label htmlFor="facebook">Facebook:</label>
+<div className='divForminput'>
+  {/* <label htmlFor="facebook">Facebook:</label> */}
   <input
     id="facebook"
     name="facebook"
     type="text"
     value={formik.values.facebook}
     onChange={formik.handleChange}
+    placeholder='Facebook'
+    className='inputs'
   />
   {formik.touched.facebook && formik.errors.facebook ? (
     <div>{formik.errors.facebook}</div>
   ) : null}
 </div>
 
-<div>
-  <label htmlFor="instagram">Instagram:</label>
+<div className='divForminput'>
+  {/* <label htmlFor="instagram">Instagram:</label> */}
   <input
     id="instagram"
     name="instagram"
     type="text"
     value={formik.values.instagram}
     onChange={formik.handleChange}
+    placeholder='Instagram:'
+    className='inputs'
   />
   {formik.touched.instagram && formik.errors.instagram ? (
     <div>{formik.errors.instagram}</div>
   ) : null}
 </div>
 
-<div>
+<div className='divForminput'>
   <label htmlFor="acceptAgreement">
     I accept the terms and conditions:
     <input
@@ -171,12 +202,34 @@ const AdoptionForm = (props) => {
     <div>{formik.errors.acceptAgreement}</div>
   ) : null}
 </div>
-
+<div className="buttonSubtmit text-center ">
 <button type="submit" disabled={formik.isSubmitting}>
   {formik.isSubmitting ? 'Submitting...' : 'Submit'}
 </button>
-</form>
-);
+</div>
+    </form>
+</div>
+
+
+    </div>
+   {/* IMAGEN */}
+   
+   
+   <div className='hidden lg:block lg:h-screen'>  
+      <img className='w-[100%] h-full object-cover' src="/gatitoform.png" alt="gatito que lee" />
+   </div>
+
+
+
+
+
+    </div>
+      <div>
+        <Footer />
+      </div>
+
+      </div>
+  )
 };
 
 export default AdoptionForm;

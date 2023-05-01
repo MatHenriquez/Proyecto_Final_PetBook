@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { adoptHandlerGet, adoptHandlerPost, adoptHandlerPut, adoptHandlerDelete } = require('../handlers/adoptHandler');
+const { adoptHandlerGet, adoptHandlerPost, adoptHandlerPut, adoptHandlerDelete, adoptStatusHandlerApprovedPut } = require('../handlers/adoptHandler');
 const { check } = require('express-validator');
 const { validateAttributes } = require('../middlewares/validateAttributes');
 const { isRoleValid, isEmailValid, userByIdExists, adoptionByIdExists } = require('../helpers/dbValidators');
@@ -27,9 +27,20 @@ adoptRoutes.post('/', [
 adoptRoutes.put('/:id', [
     check('id', 'Not a valid ID').isUUID(),
     //check('id').custom( userByIdExists ),
-    check('role').custom(isRoleValid), // validate role
+    check('role','role not valid, only admin').isIn(['admin_role']),
+    //check('role').custom(isRoleValid), // validate role
+    //isAdminRole,
     validateAttributes
 ], adoptHandlerPut );
+
+adoptRoutes.put('/approved/:id', [
+    check('id', 'Not a valid ID').isUUID(),
+    //check('id').custom( userByIdExists ),
+    check('role','role not valid, only admin').isIn(['admin_role']),
+    //check('role').custom(isRoleValid), // validate role
+    //isAdminRole,
+    validateAttributes
+], adoptStatusHandlerApprovedPut );
 
 adoptRoutes.delete('/:id', [
     validateJWT,

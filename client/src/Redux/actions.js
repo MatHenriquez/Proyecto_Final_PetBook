@@ -1,20 +1,26 @@
 import axios from "axios";
 
-
 import {
   GET_PETS,
   FETCH_PET_DETAIL_SUCCESS,
   GET_PETS_RAMDON_HOME,
   GET_PET_NAME,
   SET_PET_NAME,
-  
   SEND_EMAIL,
-  SEND_ADOPTION_REQUEST
+  SEND_ADOPTION_REQUEST,
+  GET_PRODUCTS,
+  GET_USERS,
+  ADD_FAVORITE,
+  DELETE_FAVORITE,
+
+ 
+
 
 } from "./types";
 
 export const getPets = (params, page) => async (dispatch) => {
   console.log(params);
+
   try {
     if (params) {
       const res = await axios.get(`/pets${params}`);
@@ -88,7 +94,7 @@ export const registerUser = (userData) => async (dispatch) => {
   try {
     const res = await axios.post(`/users`, userData);
 
-    localStorage.setItem('id', res.data.savedUser.id);
+    localStorage.setItem("id", res.data.savedUser.id);
     console.log(res.data);
   } catch (err) {
     console.error(err);
@@ -139,22 +145,128 @@ export const sendEmail = (name, lastname, email, message) => {
       reject(error);
     }
   });
+};
+
+// export const sendAdoptionRequest =
+//   (userEmail, petName, message) => async (dispatch) => {
+//     try {
+//       const response = await axios.post("/pets/adopt", {
+//         userEmail,
+//         petName,
+//         message,
+//         date: new Date(),
+//       });
+//       dispatch({ type: SEND_ADOPTION_REQUEST, payload: response.data });
+//     } catch (error) {
+//       console.error(error);
+//       // handle error
+//     }
+//   };
+
+
+
+export const getUsers = () => {
+  return async function (dispatch) {
+    try {
+      const response = await axios("http://localhost:3001/users");
+      return dispatch({
+        type: GET_USERS,
+        payload: response.data,
+      });
+    } catch (error) {
+     window.alert(error.message)
+    }
+  };
+};
+
+
+export const sendAdoptionRequest =
+  (userEmail, petName, message) => async (dispatch) => {
+    try {
+      const response = await axios.post("/pets/adopt", {
+        userEmail,
+        petName,
+        message,
+        date: new Date(),
+      });
+
+      dispatch({ type: SEND_ADOPTION_REQUEST, payload: response.data });
+    } catch (error) {
+      console.error(error);
+      // handle error
+    }
+  };
+
+export const addFavorite = (id) => {
+  return { type:ADD_FAVORITE, payload:id }
 }
 
-export const sendAdoptionRequest = (userEmail, petName, message) => async (dispatch) => {
-  try {
-    const response = await axios.post('/pets/adopt', {
-      userEmail,
-      petName,
-      message,
-      date: new Date(),
+export const deleteFavorite = (id) =>{
+  console.log("accion despachada")
+  return { type: DELETE_FAVORITE, payload:id }
+
+}
+
+
+//PRODUCTOS
+
+
+ export const getAllProducts = (
+  id,
+  name,
+  status,
+  userId,
+  image,
+  quantity,
+  available,
+  price,
+  category,
+  description,
+  weight,
+  size,
+  specie,
+  consumption_age,
+  discount,
+  categoryId,
+  petId,
+  user,
+  productCategory,) => async (dispatch) => {
+  try { 
+    const res = await axios.get('/products', {
+      id,
+      name,
+      status,
+      userId,
+      image,
+      quantity,
+      available,
+      price,
+      category,
+      description,
+      weight,
+      size,
+      specie,
+      consumption_age,
+      discount,
+      categoryId,
+      petId,
+      user,
+      productCategory,
+      });
+    
+    dispatch({
+      type: GET_PRODUCTS,
+      payload: res.data,
     });
-    dispatch({ type: SEND_ADOPTION_REQUEST, payload: response.data });
-  } catch (error) {
-    console.error(error);
-    // handle error
+  } catch (err) {
+    console.error(err);
   }
-};
+}; 
+
+
+
+
+
 
 
 

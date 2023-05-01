@@ -12,7 +12,7 @@ mercadopago.configure({
 
 //Routes
 app.get('/', (req, res) =>{
-    console.log(req.query);
+    
     // Crea un objeto de preferencia
     let preference = {
         items: [
@@ -23,7 +23,7 @@ app.get('/', (req, res) =>{
         },
         ],
         back_urls: {
-            success: "http://127.0.0.1:5173/thanks",
+            success: `http://127.0.0.1:5173/thanks?id=${req.query.id}&amount=${req.query.price}`,
             failure: "http://127.0.0.1:5173/failure",
             pending: "http://127.0.0.1:5173/pending"
         },

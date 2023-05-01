@@ -36,8 +36,10 @@ const postAdoptUserPetsController = async (idUser, idPet) => {
         
         const user = await User.findByPk(idUser);
         const pet = await Pet.findByPk(idPet);
+        const findPet = await User_pet.findOne({ where: { petId: idPet } });
         
         if(!user || !pet) throw new Error("There is no user or pet");
+        if (findPet) throw new Error("You can't adopt this pet");
 
         await user.addPet(pet);
 

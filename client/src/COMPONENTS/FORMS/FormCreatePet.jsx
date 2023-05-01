@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-import validator from "validator"
+import { validateData } from "../FORMS/validations.js"
+
 
 const FormCreatePet = () => {
+  //  ESTADOS LOCALES
   const [loading, setLoading] = useState(false);
-
+  const [access, setAccess] = useState(false);
   const [url, setUrl] = useState("");
 
   const [data, setData] = useState({
@@ -19,13 +21,58 @@ const FormCreatePet = () => {
     description: "",
   });
 
+  const [error, setErrors] = useState({
+    image: "",
+    name: "",
+    specie: "",
+    size: "",
+    weight: "",
+    age: "",
+    gender: "",
+    description: "",
+  });
+  
+  
+
+  /********************************** */
+
+  // UseEfect para que no se pueda apretar boton de crear con campos vacios
+  useEffect(() => {
+    if (
+      data.name &&
+      data.age &&
+      data.gender &&
+      data.size &&
+      data.specie &&
+      data.weight &&
+      url
+    ) {
+      setAccess(true);
+    } else {
+      setAccess(false);
+    }
+  }, [data, url]);
+
+  /***************************** */
+
+  //ONCHANGE PARA CAPTURAR VALORES DE INPUTS
   const onchangeData = (event) => {
     setData({
       ...data,
       [event.target.name]: event.target.value,
     });
-  };
 
+    setErrors(
+      validateData({
+        ...data,
+        [event.target.name]: event.target.value,
+        
+      })
+    );
+  };
+  /************************** */
+
+  //FUNCION PARA CONVERTIR ARCHIVO FILE A BASE 64
   const convertBase64 = (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
@@ -41,63 +88,84 @@ const FormCreatePet = () => {
     });
   };
 
-  function uploadSingleImage(base64) {
-    setLoading(true);
-    axios
-      .post("/pets", {
-        image: url,
-        name: data?.name,
-        specie: data?.specie,
-        size: data?.size,
-        weight: data?.weight,
-        age:data?.age,
-        gender: data?.gender,
-        description:data?.description
-      })
-      .then((res) => {
-        setUrl(res.data);
-        alert("Image uploaded Succesfully");
-      })
-      .then(() => setLoading(false))
-      .catch(console.log);
-  }
 
+  /********************** */
+
+  // FUNCION PARA CREACION SOLO SI LOS CAMPOS REQUERIDOS ESTAN LLENOS
+  function uploadSingleImage() {
+    if (access) {
+      setLoading(true);
+      axios
+        .post("http://localhost:3001/pets", {
+          image: url,
+          name: data?.name,
+          specie: data?.specie,
+          size: data?.size,
+          weight: data?.weight,
+          age: data?.age,
+          gender: data?.gender,
+          description: data?.description,
+        })
+        .then((res) => {
+          setUrl(res.data);
+          alert("Pet created Succesfully");
+          handlerClear()
+          cleanErrors()
+        })
+        .then(() => setLoading(false))
+        .catch(console.log);
+    } else window.alert("complete todos lo campos");
+
+  }
+  /********************** */
+
+  // ONCHANGE PARA CAPTURAR LA IMAGEN Y LLAMA A LA FN DE BASE 64 Y LA SETEA AL ESTADO URL
   const uploadImage = async (event) => {
     const files = event.target.files;
     console.log(files[0]);
 
     if (files.length === 1) {
       const base64 = await convertBase64(files[0]);
-      console.log(base64);
       setUrl(base64);
-
       return;
     }
+  }; /************************** */
+
+  //FUNCION PARA LIMPIAR CAMPOS CON BOTON
+  const handlerClear = () => {
+    setData({
+      image: "",
+      name: "",
+      specie: "",
+      size: "",
+      weight: "",
+      age: "",
+      gender: "",
+      description: "",
+    });
+    setUrl("");
   };
-  
-  const handlerClear = () =>{
-  setData({
-    image: "",
-    name:"",
+  /****************** */
+  const cleanErrors = () =>{
+  setErrors({
+    name: "",
     specie: "",
     size: "",
     weight: "",
-    age:"",
+    age: "",
     gender: "",
-    description:""
   })
-  setUrl("")
   }
+  useEffect(()=>{
+  validateData(data)
+  },[data,error])
+
 
   return (
     <div className="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       {loading ? (
         <div className="flex items-center justify-center">
-          <img
-            src={
-              "https://media.tenor.com/X5QM_xv9XW8AAAAC/golden-retriever-dog.gif"
-            }
-          />{" "}
+         <img src={data.specie === "Dog" && "/PerroGif.gif" || data.specie === "Cat" && "/gatoGif.gif" ||data.specie === "Parrot" && "/ParrotDance.gif"|| data.specie === "Rabbit" && "/RabbitGif.gif"|| data.specie === "Guinea Pig" && "/guineaPigGif.gif" }alt="PetsGif" />
         </div>
       ) : (
         <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -116,6 +184,7 @@ const FormCreatePet = () => {
               </div>
               <div className="divide-y divide-gray-200">
                 <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                  {/* DIV NAME */}
                   <div className="flex flex-col">
                     <label className="leading-loose">Name</label>
                     <input
@@ -126,7 +195,10 @@ const FormCreatePet = () => {
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Type a Name..."
                     />
+                    {error.name? <p>{error.name}</p> : ""}
                   </div>
+
+                  {/* DIV SPECIE */}
                   <div className="flex flex-col">
                     <label className="leading-loose">Specie</label>
                     <input
@@ -137,7 +209,10 @@ const FormCreatePet = () => {
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Indicates the Specie"
                     />
+                    {error.specie? <p>{error.specie}</p> : ""}
                   </div>
+
+                  {/* DIV GENDER */}
                   <div className="flex flex-col">
                     <label className="leading-loose">Gender</label>
                     <input
@@ -148,7 +223,10 @@ const FormCreatePet = () => {
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Indicates the Gender"
                     />
+                    {error.gender? <p>{error.gender}</p> : ""}
                   </div>
+
+                  {/* DIV SIZE */}
                   <div className="flex flex-col">
                     <label className="leading-loose">Size</label>
                     <input
@@ -159,9 +237,11 @@ const FormCreatePet = () => {
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Indicates the Size"
                     />
+                    {error.size? <p>{error.size}</p> : ""}
                   </div>
 
                   <div className="flex items-center space-x-4">
+                    {/* DIV WEIGHT */}
                     <div className="flex flex-col">
                       <label className="leading-loose">Weight</label>
                       <div className="relative focus-within:text-gray-600 text-gray-400">
@@ -173,8 +253,11 @@ const FormCreatePet = () => {
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                           placeholder="add a weight"
                         />
+                        {error.weight? <p>{error.weight}</p> : ""}
                       </div>
                     </div>
+
+                    {/* DIV AGE */}
                     <div className="flex flex-col">
                       <label className="leading-loose">Age</label>
                       <div className="relative focus-within:text-gray-600 text-gray-400">
@@ -186,10 +269,13 @@ const FormCreatePet = () => {
                           className="pr-4 pl-10 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                           placeholder="add a Age"
                         />
+                       {error.age? <p>{error.age}</p> : ""}
                         <div className="absolute left-3 top-2"></div>
                       </div>
                     </div>
                   </div>
+
+                  {/* DIV TELL MORE */}
                   <div className="flex flex-col">
                     <label className="leading-loose">tell us more about</label>
                     <input
@@ -201,6 +287,8 @@ const FormCreatePet = () => {
                       placeholder="Optional"
                     />
                   </div>
+
+                  {/* DIV UPLOAD IMAGE */}
                   <div className="flex flex-col">
                     <label className="leading-loose">Upload Image</label>
                     <input
@@ -209,10 +297,14 @@ const FormCreatePet = () => {
                       className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                       placeholder="Optional"
                     />
+                    
                   </div>
                 </div>
                 <div className="pt-4 flex items-center space-x-4">
-                  <button onClick={handlerClear} className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none">
+                  <button
+                    onClick={handlerClear}
+                    className="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none"
+                  >
                     <svg
                       className="w-6 h-6 mr-3"
                       fill="none"
@@ -246,4 +338,3 @@ const FormCreatePet = () => {
 };
 
 export default FormCreatePet;
-

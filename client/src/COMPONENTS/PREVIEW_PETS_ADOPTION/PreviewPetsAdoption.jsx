@@ -1,7 +1,7 @@
 import React from "react";
 
 const PreviewPetsAdoption = ({ previewPets }) => {
-  console.log(previewPets);
+ 
   return (
     <div  >
       {previewPets?.map((pet, index) => {

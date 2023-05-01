@@ -1,0 +1,19 @@
+{
+    "id":"2c93808487b7732f0187bda94b31021e",
+    "payer_id":1356336058,"payer_email":"",
+    "back_url":"https://proyecto-final-pet-book-zgni.vercel.app/thanks",
+    "collector_id":1355453924,
+    "application_id":712263956584107,
+    "status":"pending",
+    "reason":"Pet Sponsor",
+    "date_created":"2023-04-26T09:03:21.387-04:00",
+    "last_modified":"2023-04-26T09:03:21.393-04:00",
+    "init_point":"https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_id=2c93808487b7732f0187bda94b31021e",
+    "auto_recurring":{
+        "frequency":1,"frequency_type":"months","transaction_amount":12,"currency_id":"ARS","free_trial":null
+        },
+    "summarized":{
+            "quotas":null,"charged_quantity":null,"pending_charge_quantity":null,"charged_amount":null,"pending_charge_amount":null,"semaphore":null,"last_charged_date":null,"last_charged_amount":null
+            },
+    "payment_method_id":null,"first_invoice_offset":null
+}

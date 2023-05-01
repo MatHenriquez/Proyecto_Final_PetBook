@@ -19,6 +19,7 @@ const getPetByNameController = async (name) => {
           },
         },
       ],
+      adopted: false
     },
   });
 

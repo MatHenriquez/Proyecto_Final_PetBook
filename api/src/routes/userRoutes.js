@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { userHandlerGet, userHandlerPost, userHandlerPut, userHandlerDelete } = require('../handlers/userHandler');
+const { userHandlerGet, userHandlerPost, userHandlerPut, userHandlerDelete,userHandlerVerifyAdminRole } = require('../handlers/userHandler');
 const { check } = require('express-validator');
 const { validateAttributes } = require('../middlewares/validateAttributes');
 const { isRoleValid, isEmailValid, userByIdExists } = require('../helpers/dbValidators');
@@ -12,6 +12,7 @@ const userRoutes = Router();
 userRoutes.get('/', userHandlerGet );
 
 userRoutes.get('/:id', userHandlerGet );
+userRoutes.get("/verifyAdminRole/:id",userHandlerVerifyAdminRole)
 
 userRoutes.post('/', [
     check('nickname', 'nickname is required').not().isEmpty(),

@@ -117,7 +117,7 @@ function handleCredentialResponse(response){
 
   return (
     <div 
-    className='w-fit max-h-fit'>
+    className='max-w-screen max-h-fit'>
     <div 
     className='bg-gray-100 flex flex-col justify-center max-h-fit'>
     
@@ -169,6 +169,9 @@ function handleCredentialResponse(response){
       <button 
       type="submit"
       className='buttonSubtmit'
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          handleSubmit();}}}
       >Login
       </button>
 

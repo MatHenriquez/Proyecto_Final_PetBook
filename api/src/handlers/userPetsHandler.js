@@ -27,7 +27,10 @@ const handlerPostUserPets = async (req, res) => {
 }
 
 const handlerPostAdopted = async (req, res) => {
+
     const { idUser, idPet } = req.body;
+    
+    console.log(idPet,idUser);
 
     try {
         const data = await postAdoptUserPetsController(idUser, idPet);

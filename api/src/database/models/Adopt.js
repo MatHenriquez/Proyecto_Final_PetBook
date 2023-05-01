@@ -46,9 +46,9 @@ const Adopt = (sequelize) => sequelize.define(
         defaultValue: false,
       },
       status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.ENUM("pending", "approved", "declined"),
         allowNull: false,
-        defaultValue: true
+        defaultValue: "pending"
       }
     },
     { 
