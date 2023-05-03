@@ -12,6 +12,7 @@ import FilterProducts from './FilterProducts';
 
 
 
+
 export default function Shop() {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
@@ -19,64 +20,22 @@ export default function Shop() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
+ 
+  
 
   useEffect(() => {
     dispatch(getAllProducts())
       .then(() => setIsLoading(false));
   }, [dispatch]);
 
+  // Get current products
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = state.products.products.slice(indexOfFirstProduct, indexOfLastProduct);
 
-  
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  
-
-   //Paginado
-//  const indexOfLastProduct = currentPage * productsPerPage;
-//  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-//  const currentProducts = Array.isArray(products) && products.slice(indexOfFirstProduct, indexOfLastProduct);
-
-//  const pageNumbers = [];
-//  for (let i = 1; i <= Math.ceil(Array.isArray(products) && products.length / productsPerPage); i++) {
-//    pageNumbers.push(i);
-//  }
-
-//  const handlePageClick = (event) => {
-//    setCurrentPage(Number(event.target.id));
-//  }
-
-//  const goToNextPage = () => {
-//    setCurrentPage(currentPage + 1);
-//  }
-
-//  const goToPrevPage = () => {
-//    setCurrentPage(currentPage - 1);
-//  }
-
-//  const renderPageNumbers = pageNumbers.map(number => {
-//    if (number === currentPage) {
-//      return (
-//        <div
-//          key={number}
-//          id={number}
-//          onClick={handlePageClick}
-//          className="btn btn-primary text-white text-lg font-bold mt-[0.18rem]">
-//          {number}
-//        </div>
-//      )
-//    } else if (number > currentPage - 1 && number < currentPage + 1) {
-//      return (
-//        <div
-//          key={number}
-//          id={number}
-//          onClick={handlePageClick}
-//          className="btn btn-ghost text-neutral text-lg font-bold mt-[0.18rem]">
-//          {number}
-//        </div>
-//      )
-//    } else {
-//      return null;
-//    }
-//  })
  
   return (
     <div>
@@ -150,7 +109,8 @@ export default function Shop() {
             
           
           </div>
-          
+
+          <PaginadoShop />
         </div>
       </div>
       <div> <Footer /></div>
