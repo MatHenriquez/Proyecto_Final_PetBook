@@ -33,6 +33,9 @@ function handleCredentialResponse(response){
     .then( data => {
       console.log(data)
       localStorage.setItem('email', data.user.email)
+      localStorage.setItem('nickname', data.user.nickname)
+      localStorage.setItem('id', data.user.id);
+      localStorage.setItem('token', data.token)
       navigate('/home');
     })
     .catch(error => console.error(error))
@@ -189,7 +192,7 @@ function handleCredentialResponse(response){
      <h4 className='text-center text-black font-normal mt-2'>OR</h4>
 
     <div id="buttonDiv"></div>
-  {/* <button id="googleSignOut" onClick={handleSignOutButton}>Sign Out</button>   ESTO HAY QUE AGREGARLO CUANDO HAGAMOS UN */}
+  <button id="googleSignOut" onClick={handleSignOutButton}>Sign Out</button>
 
       </div>
       

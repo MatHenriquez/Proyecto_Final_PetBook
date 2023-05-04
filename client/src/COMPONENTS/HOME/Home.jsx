@@ -52,7 +52,7 @@ const Home = () => {
     <div>
       <div className="">
         <div>
-          {localStorage.getItem("token") ? (
+          {localStorage.getItem("token") || localStorage.getItem('email') ? (
             <HeaderLogin className="mb-4" />
           ) : (
             <Header className="mb-4" />
