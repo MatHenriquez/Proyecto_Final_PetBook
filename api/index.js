@@ -7,7 +7,7 @@ const loadPets = require('./src/database/scriptPets.js')
 const {uploadProductos} = require("./src/controllers/uploadProductsCotroller.js");
 
 
-const tuApi = "bfcc6021-c4cc-4514-9355-10ec618579b";
+const tuApi = "bfcc6021-c4cc-4514-9355-10ec618579bb";
 
 sequelize.sync({alter:true }).then( async () => {
 
