@@ -97,7 +97,7 @@ const FormCreatePet = () => {
     if (access) {
       setLoading(true);
       axios
-        .post("http://localhost:3001/pets", {
+        .post("/pets", {
           image: url,
           name: data?.name,
           specie: data?.specie,

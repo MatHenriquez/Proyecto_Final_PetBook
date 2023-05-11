@@ -23,7 +23,7 @@ const ProductForm = () => {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const response = await axios.get("http://localhost:3001/categories");
+      const response = await axios.get("/categories");
       setCategories(response.data.categories);
     };
 
