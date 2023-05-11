@@ -40,10 +40,10 @@ import Profile from "../src/COMPONENTS/PROFILE/Profile";
 // axios.defaults.baseURL = "https://proyectofinalpetbook-production.up.railway.app";
 
 //Instancia de axios para Render.
-axios.defaults.baseURL = "https://petbook-server.onrender.com";
+// axios.defaults.baseURL = "https://petbook-server.onrender.com";
 
 //Instancia de axios para trabajo local:
-// axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   const location = useLocation();
